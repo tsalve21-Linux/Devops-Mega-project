@@ -9,7 +9,7 @@ pipeline{
     environment {
         APP_NAME = "devops-mega-project"
         RELEASE = "1.0.0"
-        DOCKER_USER = "mydevopsuser46"
+        DOCKER_USER = "tsalve21"
         DOCKER_PASS = 'dockerhub'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
@@ -84,7 +84,7 @@ pipeline{
         stage("Trivy Scan") {
             steps {
                 script {
-		   sh ('docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image mydevopsuser46/devops-mega-project:latest  --no-progress --scanners vuln  --exit-code 0 --severity HIGH,CRITICAL --format table')
+		   sh ('docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image tsalve21/devops-mega-project:latest  --no-progress --scanners vuln  --exit-code 0 --severity HIGH,CRITICAL --format table')
                 }
             }
 
